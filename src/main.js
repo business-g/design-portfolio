@@ -23,7 +23,7 @@ document.querySelector('#app').innerHTML = `
         <div class="introduction">
           <p class="reveal" style="--delay: 75ms">I design product interfaces and websites, connecting product thinking with clear visual direction and thoughtful interaction.</p>
           <p class="reveal" style="--delay: 110ms">Whether you’re building something new or improving an existing product, I can help define the direction and turn it into a clear, cohesive experience.</p>
-          <p class="reveal" style="--delay: 145ms">View my <span class="social-link social-cv">CV</span> or reach me on <a class="social-link social-telegram" href="https://t.me/kctv_b" target="_blank" rel="noopener noreferrer">Telegram</a> or <a class="social-link social-email" href="mailto:exlambo@gmail.com">by email</a>.</p>
+          <p class="reveal" style="--delay: 145ms">View my <a class="social-link social-cv" href="/assets/bogdan-k-cv.pdf" target="_blank" rel="noopener noreferrer">CV</a> or reach me on <a class="social-link social-telegram" href="https://t.me/kctv_b" target="_blank" rel="noopener noreferrer">Telegram</a> or <a class="social-link social-email" href="mailto:exlambo@gmail.com">by email</a>.</p>
         </div>
 
         <section class="case-studies reveal" style="--delay: 180ms" aria-labelledby="case-studies-title">
