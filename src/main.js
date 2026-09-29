@@ -45,16 +45,16 @@ document.querySelector('#app').innerHTML = `
         <figure class="work-frame portfolio-slider" id="work-07" aria-label="Invarn website design, slide 1 of 4">
           <div class="portfolio-slider-track">
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" src="/assets/invarn-site-01.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-01.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="2032" height="1440" role="img" aria-label="Invarn website hero animation"></canvas>
             </div>
             <div class="portfolio-slide"><img src="/assets/invarn-site-03.webp" width="4064" height="2880" loading="lazy" alt="Invarn action control website page" /></div>
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" src="/assets/invarn-site-04.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-04.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="2032" height="1440" role="img" aria-label="Invarn pricing website animation"></canvas>
             </div>
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" src="/assets/invarn-site-05.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-05.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="3048" height="2160" role="img" aria-label="Invarn website footer animation"></canvas>
             </div>
           </div>
@@ -69,20 +69,20 @@ document.querySelector('#app').innerHTML = `
         <figure class="work-frame" id="work-09"><img src="/assets/work-09.webp" width="4064" height="2880" loading="lazy" alt="Wallet connection mobile interface design preview" /></figure>
         <figure class="work-frame" id="work-10"><img src="/assets/work-10.webp" width="4064" height="2880" loading="lazy" alt="Approval pressure analytics design preview" /></figure>
         <figure class="work-frame standalone-video-frame" id="work-12">
-          <video class="portfolio-video-source" src="/assets/work-12.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-12.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3194" height="2160" role="img" aria-label="Transfer flow interface animation"></canvas>
         </figure>
         <figure class="work-frame" id="work-11"><img src="/assets/work-11.webp" width="4064" height="2880" loading="lazy" alt="Audio and video settings design preview" /></figure>
         <figure class="work-frame standalone-video-frame" id="work-13" style="--video-ratio: 3080 / 2160">
-          <video class="portfolio-video-source" src="/assets/work-13.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-13.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3080" height="2160" role="img" aria-label="Product interface animation"></canvas>
         </figure>
         <figure class="work-frame standalone-video-frame" id="work-14">
-          <video class="portfolio-video-source" src="/assets/work-14.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-14.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3194" height="2160" role="img" aria-label="Lottie card interface animation"></canvas>
         </figure>
         <figure class="work-frame standalone-video-frame" id="work-15" style="--video-ratio: 3202 / 2160">
-          <video class="portfolio-video-source" src="/assets/work-15.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="auto" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-15.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3202" height="2160" role="img" aria-label="Product scene interface animation"></canvas>
         </figure>
       </div>
@@ -261,6 +261,7 @@ if (!reduceMotion.matches) {
 }
 
 let activeSlide = 0;
+let sliderInView = false;
 let dragStartX = 0;
 let dragStartTranslate = 0;
 let lastPointerX = 0;
@@ -295,11 +296,16 @@ function startVideoFrames(video) {
   render();
 }
 
+function loadVideo(video) {
+  if (video.hasAttribute('src')) return;
+  video.preload = 'auto';
+  video.src = video.dataset.src;
+}
+
 portfolioVideos.forEach(video => {
   video.addEventListener('loadeddata', () => drawVideoFrame(video), { once: true });
   video.addEventListener('error', () => video.closest('.work-frame').classList.remove('is-loading'), { once: true });
   video.addEventListener('play', () => startVideoFrames(video));
-  video.load();
 });
 
 portfolioSlides.forEach(slide => {
@@ -315,8 +321,12 @@ portfolioSlides.forEach(slide => {
 const standaloneVideoObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     const video = entry.target.querySelector('.portfolio-video-source');
-    if (entry.isIntersecting && !reduceMotion.matches) void video.play().catch(() => {});
-    else video.pause();
+    if (!entry.isIntersecting) {
+      video.pause();
+      return;
+    }
+    loadVideo(video);
+    if (!reduceMotion.matches) void video.play().catch(() => {});
   });
 }, { threshold: .15 });
 document.querySelectorAll('.standalone-video-frame').forEach(frame => standaloneVideoObserver.observe(frame));
@@ -342,10 +352,37 @@ function showPortfolioSlide(index) {
   portfolioSlides.forEach((slide, slideIndex) => {
     const video = slide.querySelector('.portfolio-video-source');
     if (!video) return;
-    if (slideIndex === activeSlide && !reduceMotion.matches) void video.play().catch(() => {});
-    else video.pause();
+    if (slideIndex !== activeSlide || !sliderInView) {
+      video.pause();
+      return;
+    }
+    loadVideo(video);
+    if (!reduceMotion.matches) void video.play().catch(() => {});
   });
 }
+
+const sliderObserver = new IntersectionObserver(entries => {
+  sliderInView = entries[0].isIntersecting;
+  if (sliderInView) showPortfolioSlide(activeSlide);
+  else portfolioSliderVideos.forEach(video => video.pause());
+}, { threshold: .15 });
+sliderObserver.observe(portfolioSlider);
+
+reduceMotion.addEventListener('change', event => {
+  if (event.matches) {
+    portfolioVideos.forEach(video => video.pause());
+    return;
+  }
+  if (sliderInView) showPortfolioSlide(activeSlide);
+  document.querySelectorAll('.standalone-video-frame').forEach(frame => {
+    const bounds = frame.getBoundingClientRect();
+    if (bounds.top < window.innerHeight && bounds.bottom > 0) {
+      const video = frame.querySelector('.portfolio-video-source');
+      loadVideo(video);
+      void video.play().catch(() => {});
+    }
+  });
+});
 
 sliderDots.forEach(dot => {
   dot.addEventListener('click', () => showPortfolioSlide(Number(dot.dataset.slide)));

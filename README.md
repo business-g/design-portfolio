@@ -1,4 +1,4 @@
-# Designer portfolio
+# Design portfolio
 
 Standalone Vite project for Bogdan's portfolio.
 
