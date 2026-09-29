@@ -1,0 +1,602 @@
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  cursor: none;
+  overflow: hidden;
+}
+
+.page,
+.page * {
+  cursor: none !important;
+}
+
+.tapIndicatorLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.tapIndicator,
+.tapIndicatorPulse {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+.tapIndicator {
+  border: 2px solid rgba(229, 229, 234, 0.64);
+  background: rgba(242, 242, 247, 0.14);
+  opacity: 0.78;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.42),
+    0 3px 10px rgba(17, 17, 17, 0.05);
+}
+
+.tapIndicatorPulse {
+  border: 2px solid rgba(229, 229, 234, 0.94);
+  background: rgba(242, 242, 247, 0.39);
+  animation: tap-indicator-pop 320ms cubic-bezier(0.215, 0.61, 0.355, 1)
+    forwards;
+}
+
+@keyframes tap-indicator-pop {
+  0% {
+    opacity: 0.87;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.46);
+  }
+}
+
+.phoneShellStage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.phoneShell {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 453px;
+  height: 918px;
+  transform: translate(-50%, -50%) scale(var(--vpn-scale, 0.8));
+  transform-origin: center;
+}
+
+.phoneShellFrame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.screenFrame {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 410px;
+  height: 874px;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 56px;
+  background: #f0efed;
+  color-scheme: light;
+  forced-color-adjust: none;
+}
+
+.statusBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+.screenTitleBlock {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(-50%);
+}
+
+.screenTitle {
+  margin: 0;
+  color: #090909;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+}
+
+.connectionStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 180ms cubic-bezier(0.215, 0.61, 0.355, 1),
+    transform 180ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: opacity, transform;
+  pointer-events: none;
+}
+
+.connectionStatusVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.connectionStatusIcon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.connectionStatusText {
+  color: #9492f7;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.screenTitleLoading {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 7px;
+}
+
+.screenTitleWord {
+  display: inline-block;
+}
+
+.screenTitleDots {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  display: inline-flex;
+  width: 7px;
+  transform: translateY(-50%);
+}
+
+.screenTitleDot {
+  display: inline-block;
+  font: inherit;
+  line-height: 32px;
+  opacity: 0.15;
+  animation: screen-title-dot-blink 1.2s ease-in-out infinite;
+}
+
+.screenTitleDot:nth-child(2) {
+  animation-delay: 0.16s;
+}
+
+.screenTitleDot:nth-child(3) {
+  animation-delay: 0.32s;
+}
+
+@keyframes screen-title-dot-blink {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+
+  35% {
+    opacity: 1;
+  }
+}
+
+.cloudLayer {
+  position: absolute;
+  z-index: 0;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+  transition:
+    top 620ms cubic-bezier(0.215, 0.61, 0.355, 1),
+    left 620ms cubic-bezier(0.215, 0.61, 0.355, 1),
+    right 620ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.cloudMotion {
+  width: 100%;
+  will-change: transform;
+}
+
+.cloudImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: saturate(0);
+  transition: filter 260ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform, filter;
+}
+
+.cloudImageActive {
+  filter: saturate(1);
+}
+
+.cloudLayer3 {
+  top: 162px;
+  left: 50%;
+  width: calc(100% + 36px);
+  transform: translateX(-50%);
+}
+
+.cloudLayer3Idle {
+  top: 138px;
+}
+
+.cloudLayer2 {
+  top: 262px;
+  left: 84px;
+  width: calc(74.63% + 36px);
+}
+
+.cloudLayer2Idle {
+  left: 168px;
+}
+
+.cloudLayer1 {
+  top: 262px;
+  right: 84px;
+  width: calc(74.63% + 36px);
+}
+
+.cloudLayer1Idle {
+  right: 168px;
+}
+
+.ctaShell {
+  position: absolute;
+  top: 424px;
+  left: 50%;
+  z-index: 1;
+  width: 140px;
+  height: 164px;
+  transform: translateX(-50%);
+  border: 1px solid #fff;
+  border-radius: 999px;
+  background: #fafafa;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.04);
+  padding: 0;
+  appearance: none;
+  outline: none;
+}
+
+.ctaShell:focus-visible {
+  outline: 2px solid #27272a;
+  outline-offset: 3px;
+}
+
+.ctaCore {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  height: 156px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+  border-radius: 999px;
+  background: #f5f5f5;
+  box-shadow:
+    inset 0 0 4px 4px rgba(255, 255, 255, 0.7),
+    0 0 2px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transform-origin: center;
+  transition: transform 140ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform;
+}
+
+.ctaShellPressed .ctaCore {
+  transform: translate(-50%, -50%) scale(0.965);
+}
+
+.ctaCore canvas,
+.ctaCore > div:first-child {
+  position: absolute !important;
+  inset: 0 !important;
+  forced-color-adjust: none;
+}
+
+.ctaFill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  opacity: 0;
+  transition:
+    opacity 220ms cubic-bezier(0.215, 0.61, 0.355, 1),
+    background-color 220ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.72), transparent 34%),
+    linear-gradient(180deg, #f6b293 0%, #f1966a 100%);
+}
+
+.ctaFillLoading {
+  opacity: 1;
+}
+
+.ctaFillActive {
+  opacity: 1;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.72), transparent 34%),
+    linear-gradient(180deg, #bebcff 0%, #9492f7 100%);
+}
+
+.ctaIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  color: #d4d4db;
+}
+
+.ctaIconActive,
+.ctaIconLoading {
+  color: #fff;
+}
+
+.ctaIconLoading {
+  animation: cta-icon-pulse 0.95s ease-in-out infinite;
+}
+
+@keyframes cta-icon-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+}
+
+.locationCard {
+  position: absolute;
+  top: 632px;
+  left: 50%;
+  z-index: 2;
+  width: 370px;
+  height: 124px;
+  transform: translateX(-50%);
+  border: 1px solid #fafafa;
+  border-radius: 24px;
+  background: #fafafa;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.locationCardMeta {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.locationCardPingLabel,
+.locationCardPingValue {
+  color: #a1a1a8;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.locationCardPingStatus {
+  display: inline-flex;
+  align-items: center;
+}
+
+.locationCardPingValueUpdating {
+  animation: location-card-ping-value-refresh 180ms
+    cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.locationCardPingButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  appearance: none;
+}
+
+.locationCardPingIcon,
+.locationCardPingLoader {
+  flex: 0 0 auto;
+}
+
+.locationCardPingIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.locationCardPingLoader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(148, 146, 247, 0.22);
+  border-top-color: #9492f7;
+  border-radius: 999px;
+  animation: location-card-ping-spin 0.8s linear infinite;
+}
+
+@keyframes location-card-ping-value-refresh {
+  0% {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes location-card-ping-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.locationCardInner {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 362px;
+  height: 80px;
+  padding: 0 16px;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+.locationCardInfo {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.locationCardFlag {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  margin-right: 16px;
+}
+
+.locationCardCopy {
+  min-width: 0;
+}
+
+.locationCardCountry,
+.locationCardCity {
+  margin: 0;
+}
+
+.locationCardCountry {
+  color: #090909;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.locationCardCity {
+  color: #a1a1a8;
+  font-family: var(--font-geist), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.locationCardSignal {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+.bottomNav {
+  position: absolute;
+  top: 788px;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 220px;
+  height: 58px;
+  padding: 4px;
+  transform: translateX(-50%);
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: #fafafa;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.bottomNavItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  appearance: none;
+}
+
+.bottomNavItemActive {
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.bottomNavIcon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloudImage {
+    transition: none;
+  }
+
+  .cloudMotion {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .cloudLayer,
+  .connectionStatus,
+  .ctaCore,
+  .locationCardPingValueUpdating,
+  .locationCardPingLoader,
+  .tapIndicator,
+  .tapIndicatorPulse,
+  .screenTitleDot,
+  .ctaIconLoading {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}

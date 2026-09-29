@@ -1,0 +1,751 @@
+.page {
+  --surface: #ffffff;
+  --surface-soft: #f7f7f7;
+  --surface-border: #f0f0f0;
+  --text-strong: #0a0a0a;
+  --text-muted: #737373;
+  --shadow-soft: 0 0 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page,
+.page * {
+  box-sizing: border-box;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 602px;
+  height: 646px;
+  transform: translate(-50%, -50%) scale(var(--payment-scale, 1));
+  transform-origin: center;
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 24px;
+  overflow: hidden;
+}
+
+.purchaseBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.productIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  flex: 0 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: var(--text-muted);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-strong);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.methodSwitch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 20px;
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 4px;
+  position: relative;
+  isolation: isolate;
+}
+
+.switchThumb {
+  position: absolute;
+  inset: 4px auto 4px 4px;
+  width: calc((100% - 12px) / 2);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  transform: translate3d(0, 0, 0);
+  transition: transform 190ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform;
+  z-index: 0;
+}
+
+.methodSwitchCrypto .switchThumb {
+  transform: translate3d(calc(100% + 4px), 0, 0);
+}
+
+.switchButton {
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  min-height: 40px;
+  position: relative;
+  transition: color 160ms ease;
+  z-index: 1;
+}
+
+.switchButtonActive {
+  color: var(--text-strong);
+}
+
+.singleSelectorStage {
+  margin-top: 20px;
+  position: relative;
+}
+
+.expandedSelectorCard {
+  width: 554px;
+  height: 509px;
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 12px 4px 4px;
+  will-change: transform, opacity;
+  transform-origin: top center;
+}
+
+.expandedSelectorEnter {
+  animation: selector-card-enter 240ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.expandedSelectorExit {
+  animation: selector-card-exit 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.expandedSelectorInner {
+  width: 546px;
+  height: 469px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.expandedSelectorInnerEnter {
+  animation: selector-sheet-enter 240ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.expandedSelectorInnerExit {
+  animation: selector-sheet-exit 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.fieldCard {
+  height: 92px;
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 12px 4px 4px;
+  position: relative;
+}
+
+.fieldLabel,
+.cardInputLabel,
+.detailLabel {
+  margin: 0 0 8px 12px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.fieldLabelWideInset {
+  margin-left: 16px;
+}
+
+.selectWrap {
+  position: relative;
+}
+
+.selectButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 52px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  padding: 0 16px 0 12px;
+}
+
+.expandedSelectButton {
+  box-shadow: none;
+}
+
+.selectLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tokenIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.tokenFallbackIcon,
+.qrTokenFallbackIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #eef1ff;
+  color: var(--text-muted);
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tokenFallbackIcon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  font-size: 9px;
+}
+
+.selectValue {
+  color: var(--text-strong);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  display: block;
+  flex: 0 0 auto;
+  transition: transform 0.16s ease;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  background: var(--surface);
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text-strong);
+  cursor: pointer;
+  font-family: var(--font-geist), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 10px 12px;
+  text-align: left;
+  min-height: 52px;
+  will-change: transform, opacity;
+}
+
+.menuItem:hover {
+  background: #fafafa;
+}
+
+.menuItemActive {
+  background: transparent;
+}
+
+.menuItemAnimated {
+  opacity: 0;
+  transform: translateY(5px);
+  animation: selector-item-enter 130ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.menuItemExit {
+  animation: selector-item-exit 100ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+.methodPanel {
+  animation: method-panel-enter 180ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.menuDivider {
+  height: 1px;
+  width: calc(100% - 24px);
+  margin: 0 12px;
+  border-radius: 8px;
+  background: var(--surface-border);
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.cryptoLayout {
+  display: grid;
+  grid-template-columns: 204px minmax(0, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.qrCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 236px;
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 4px 4px 10px;
+}
+
+.qrImageWrap {
+  position: relative;
+  width: 196px;
+  height: 196px;
+  border-radius: 14.7px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.qrPixelGrid {
+  display: grid;
+  grid-template-columns: repeat(33, 1fr);
+  grid-template-rows: repeat(33, 1fr);
+  width: 162px;
+  height: 162px;
+  margin: 17px;
+  background: var(--surface);
+  animation: qr-grid-enter 180ms cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.qrPixel {
+  border-radius: 0.8px;
+  background: transparent;
+}
+
+.qrPixelOn {
+  background: #050505;
+}
+
+.qrTokenIcon,
+.qrTokenFallbackIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.qrTokenIcon {
+  object-fit: contain;
+}
+
+.qrTokenFallbackIcon {
+  font-size: 13px;
+}
+
+.qrCaption {
+  margin: auto 0 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}
+
+.detailsCol {
+  display: grid;
+  grid-template-rows: 76px 92px;
+  gap: 12px;
+}
+
+.amountCard,
+.addressCard {
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+  padding: 12px 4px 4px;
+}
+
+.amountCard {
+  height: 76px;
+}
+
+.addressCard {
+  height: 92px;
+}
+
+.addressCard .detailLabel {
+  margin-bottom: 8px;
+}
+
+.amountValue {
+  display: block;
+  color: var(--text-strong);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  padding: 0 12px;
+}
+
+.amountValueLong {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.addressRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 0 12px;
+}
+
+.addressValue {
+  min-width: 0;
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #737373;
+  cursor: pointer;
+  flex: 0 0 auto;
+  padding: 0;
+  transition: color 160ms ease;
+}
+
+.copyButton:hover {
+  color: #0a0a0a;
+}
+
+.copyIconWrap {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+}
+
+.copyIcon {
+  position: absolute;
+  inset: 0;
+  width: 16px;
+  height: 16px;
+  transition: opacity 140ms ease, transform 180ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: opacity, transform;
+}
+
+.copyIconDefault {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.copyIconSuccess {
+  color: #0a0a0a;
+  opacity: 0;
+  transform: scale(0.64) rotate(-8deg);
+}
+
+.copyIconWrapCopied .copyIconDefault {
+  opacity: 0;
+  transform: scale(0.72) rotate(8deg);
+}
+
+.copyIconWrapCopied .copyIconSuccess {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.notice {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin-top: 20px;
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background: var(--surface-soft);
+  padding: 12px;
+}
+
+.noticeIcon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.noticeText {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.toast {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 20;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  padding: 12px 14px;
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.cardPaymentForm {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.cardInputCard {
+  height: 92px;
+  border-radius: 16px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  padding: 12px 4px 4px;
+}
+
+.paymentAmountCard {
+  height: 76px;
+}
+
+.paymentAmountValue {
+  margin: 0 0 0 12px;
+  color: var(--text-strong);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.cardInputArea {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  padding: 0 12px;
+}
+
+.cardInput {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text-strong);
+  font-family: var(--font-geist), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 0;
+}
+
+.cardInput::placeholder {
+  color: #a3a3a3;
+  opacity: 1;
+}
+
+.cardFieldsRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.payButton {
+  height: 48px;
+  border: 0;
+  border-radius: 400px;
+  background: var(--text-strong);
+  color: white;
+  cursor: pointer;
+  font-family: var(--font-geist), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 1px;
+  padding: 0 20px;
+  transform: scale(1);
+  transition: background-color 150ms ease, transform 120ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  will-change: transform;
+}
+
+.payButton:hover {
+  background: #292929;
+}
+
+.payButton:active {
+  transform: scale(0.99);
+}
+
+@keyframes selector-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes selector-card-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.988);
+  }
+}
+
+@keyframes selector-sheet-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes selector-sheet-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes selector-item-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes selector-item-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes method-panel-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes qr-grid-enter {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expandedSelectorEnter,
+  .expandedSelectorExit,
+  .expandedSelectorInnerEnter,
+  .expandedSelectorInnerExit,
+  .menuItemAnimated,
+  .menuItemExit,
+  .copyIcon,
+  .payButton,
+  .qrPixelGrid,
+  .switchThumb {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .methodPanel { animation: none; }
+
+  .methodSwitchCrypto .switchThumb {
+    transform: translate3d(calc(100% + 4px), 0, 0);
+  }
+}

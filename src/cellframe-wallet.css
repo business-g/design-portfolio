@@ -1,0 +1,21 @@
+@import './cellframe-dashboard.css';
+
+.wallet-media { margin: 20px 0 0; }
+.case-images .wallet-media { margin-top: 0; }
+.wallet-media figcaption { margin-top: 12px; color: #7e7c87; font-size: 12px; line-height: 18px; text-align: center; }
+.wallet-phone-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+.wallet-phone-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.wallet-phone-grid .case-image-surface { overflow: visible; border: 0; background: transparent; }
+.wallet-phone-grid img { display: block; width: 100%; height: auto; }
+.wallet-diagram .case-image-surface { overflow: visible; border-radius: 0; background: transparent; }
+.wallet-diagram img { display: block; width: 100%; height: auto; clip-path: inset(0.983% 0.741% round 12px); }
+.wallet-video-frame { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 1; overflow: hidden; background: #fdfdfd; }
+.wallet-video-frame video { display: block; flex: none; width: 110%; max-width: none; height: auto; aspect-ratio: 1; }
+.case-next-preview[href] { text-decoration: none; }
+.case-previous-preview { align-items: flex-start; margin-left: 0; margin-right: auto; text-align: left; }
+
+@media (max-width: 640px) {
+  .wallet-phone-grid { gap: 10px; }
+  .wallet-phone-grid--three { gap: 6px; }
+  .wallet-diagram img { clip-path: inset(0.983% 0.741% round 4px); }
+}

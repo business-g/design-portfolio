@@ -1,0 +1,21 @@
+@import '@fontsource-variable/inter';
+
+@font-face {
+  font-family: 'Geist';
+  src: url('./fonts/Geist-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-geist: 'Geist';
+  --font-inter: 'Inter Variable';
+}
+
+* { box-sizing: border-box; }
+html, body, #root { width: 100%; height: 100%; margin: 0; }
+body { background: #ebebeb; font-family: 'Geist', sans-serif; }
+button, input { font: inherit; }
+.payment-canvas { width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; }
+.payment-preview { width: min(460px, calc(100% - 32px)); aspect-ratio: 602 / 646; overflow: hidden; border-radius: 20px; }

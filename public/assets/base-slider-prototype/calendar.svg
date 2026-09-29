@@ -1,0 +1,8 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="calendar-month">
+<path id="Vector" d="M2.66406 4.66927C2.66406 4.31565 2.80454 3.97651 3.05459 3.72646C3.30464 3.47641 3.64377 3.33594 3.9974 3.33594H11.9974C12.351 3.33594 12.6902 3.47641 12.9402 3.72646C13.1903 3.97651 13.3307 4.31565 13.3307 4.66927V12.6693C13.3307 13.0229 13.1903 13.362 12.9402 13.6121C12.6902 13.8621 12.351 14.0026 11.9974 14.0026H3.9974C3.64377 14.0026 3.30464 13.8621 3.05459 13.6121C2.80454 13.362 2.66406 13.0229 2.66406 12.6693V4.66927Z" stroke="#A1A1AA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M10.6641 2V4.66667" stroke="#A1A1AA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M5.33594 2V4.66667" stroke="#A1A1AA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M2.66406 7.33594H13.3307" stroke="#A1A1AA" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

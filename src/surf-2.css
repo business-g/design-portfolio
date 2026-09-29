@@ -1,0 +1,12 @@
+@import './cellframe-dashboard.css';
+
+.surf-image-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.surf-image-pair .case-image { min-width: 0; }
+.case-next-preview[href] { text-decoration: none; }
+.case-bottom-nav { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.case-previous-preview { align-items: flex-start; margin-left: 0; margin-right: auto; text-align: left; }
+
+@media (max-width: 640px) {
+  .surf-image-pair { gap: 12px; }
+  #network .surf-image-pair .case-image-surface { border-radius: 4px; }
+}
