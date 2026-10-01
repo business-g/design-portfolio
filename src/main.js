@@ -96,14 +96,14 @@ document.querySelector('#app').innerHTML = `
         <figure class="work-frame code-component-frame">
           <iframe data-src="/code-components/agent-card-clickable-prototype/index.html" title="Interactive agent card"></iframe>
         </figure>
+        <figure class="work-frame code-component-frame">
+          <iframe data-src="/code-components/reporting-backlog-dnd-prototype/index.html" title="Interactive reporting backlog drag and drop prototype"></iframe>
+        </figure>
         <figure class="work-frame code-component-frame code-component-vpn">
           <iframe data-src="/code-components/legacy-vpn-prototype/index.html" title="Interactive VPN prototype"></iframe>
         </figure>
         <figure class="work-frame code-component-frame code-component-payment">
           <iframe data-src="/code-components/legacy-payment-flow/index.html" title="Interactive payment flow prototype"></iframe>
-        </figure>
-        <figure class="work-frame code-component-frame">
-          <iframe data-src="/code-components/reporting-backlog-dnd-prototype/index.html" title="Interactive reporting backlog drag and drop prototype"></iframe>
         </figure>
       </div>
     </section>
