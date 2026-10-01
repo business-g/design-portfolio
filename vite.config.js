@@ -12,5 +12,6 @@ export default defineConfig({
     agentCard: resolve(import.meta.dirname, 'code-components/agent-card-clickable-prototype/index.html'),
     slider: resolve(import.meta.dirname, 'code-components/base-slider-prototype/index.html'),
     prototype: resolve(import.meta.dirname, 'code-components/base-clickable-prototype/index.html'),
+    reportingBacklog: resolve(import.meta.dirname, 'code-components/reporting-backlog-dnd-prototype/index.html'),
   } } },
 });

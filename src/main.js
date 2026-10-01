@@ -102,6 +102,9 @@ document.querySelector('#app').innerHTML = `
         <figure class="work-frame code-component-frame code-component-payment">
           <iframe data-src="/code-components/legacy-payment-flow/index.html" title="Interactive payment flow prototype"></iframe>
         </figure>
+        <figure class="work-frame code-component-frame">
+          <iframe data-src="/code-components/reporting-backlog-dnd-prototype/index.html" title="Interactive reporting backlog drag and drop prototype"></iframe>
+        </figure>
       </div>
     </section>
 
