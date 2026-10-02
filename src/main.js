@@ -45,7 +45,7 @@ document.querySelector('#app').innerHTML = `
         <figure class="work-frame portfolio-slider" id="work-07" aria-label="Invarn website design, slide 1 of 4">
           <div class="portfolio-slider-track">
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" data-src="/assets/invarn-site-01.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-01-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="2032" height="1440" role="img" aria-label="Invarn website hero animation"></canvas>
             </div>
             <div class="portfolio-slide"><img src="/assets/invarn-site-03-optimized.webp" width="4064" height="2880" loading="lazy" decoding="async" alt="Invarn action control website page" /></div>
@@ -54,7 +54,7 @@ document.querySelector('#app').innerHTML = `
               <canvas class="portfolio-video-canvas" width="2032" height="1440" role="img" aria-label="Invarn pricing website animation"></canvas>
             </div>
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" data-src="/assets/invarn-site-05.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-05-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="3048" height="2160" role="img" aria-label="Invarn website footer animation"></canvas>
             </div>
           </div>
