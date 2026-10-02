@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Billing Checkbox Container">
+<rect x="0.5" y="0.5" width="21" height="21" rx="5.5" fill="url(#paint0_linear_0_12)"/>
+<rect x="0.5" y="0.5" width="21" height="21" rx="5.5" stroke="#1264DF"/>
+<path id="Vector" d="M8 11L10 13L14 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_12" x1="11" y1="0" x2="11" y2="22" gradientUnits="userSpaceOnUse">
+<stop stop-color="#3983FF"/>
+<stop offset="1" stop-color="#0B6FFF"/>
+</linearGradient>
+</defs>
+</svg>

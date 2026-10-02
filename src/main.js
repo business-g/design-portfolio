@@ -94,6 +94,9 @@ document.querySelector('#app').innerHTML = `
           <iframe data-src="/code-components/base-slider-prototype/index.html" title="Interactive data export schedule slider"></iframe>
         </figure>
         <figure class="work-frame code-component-frame">
+          <iframe data-src="/code-components/support-volume-figma-prototype/index.html" title="Interactive support volume chart"></iframe>
+        </figure>
+        <figure class="work-frame code-component-frame">
           <iframe data-src="/code-components/reporting-backlog-dnd-prototype/index.html" title="Interactive reporting backlog drag and drop prototype"></iframe>
         </figure>
         <figure class="work-frame code-component-frame">

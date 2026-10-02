@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap");
+
+:root { font-family: "DM Sans", Arial, sans-serif; color: #09090b; background: #e4e4e4; font-synthesis: none; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button { font: inherit; cursor: pointer; }
+.stage { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #e4e4e4; }
+.card { width: 725px; height: 414px; max-width: 100%; padding: 12px 4px 4px; border-radius: 24px; background: #fafafa; box-shadow: 0 0 0.5px rgba(0,0,0,.32); }
+.card-header { height: 56px; padding: 0 8px 0 12px; display: flex; align-items: flex-start; justify-content: space-between; }
+.heading h1 { font-size: 15px; font-weight: 500; line-height: 24px; margin: 0; }
+.heading p { color: #71717a; font-size: 13.5px; font-weight: 400; line-height: 20px; margin: 0; }
+.period-switch { position: relative; height: 32px; padding: 2px; display: flex; border: .5px solid #d6d6d6; border-radius: 100px; background: #f4f4f5; }
+.period-indicator { position: absolute; top: 2px; left: 2px; width: 60px; height: 27px; border: .5px solid #e0e0e0; border-radius: 100px; background: #fafafa; box-shadow: 0 1px 2px rgba(0,0,0,.05); transform: translateX(0); transition: transform 180ms cubic-bezier(.645,.045,.355,1); pointer-events: none; }
+.period-indicator.is-month { transform: translateX(60px); }
+.period-switch button { position: relative; width: 60px; padding: 0; border: 0; border-radius: 100px; color: #71717a; background: transparent; font-size: 13px; font-weight: 500; letter-spacing: -.13px; }
+.period-switch button.active { color: #09090b; }
+.period-switch button:focus, .table-row:focus, .checkbox-button:focus, .topic-heading:focus, .activity-chart:focus { outline: none; }
+.period-switch button:focus-visible, .table-row:focus-visible, .checkbox-button:focus-visible, .topic-heading:focus-visible { outline: 1px solid #c4c4cc; outline-offset: -2px; }
+.content { height: 290px; display: grid; grid-template-columns: 332px minmax(0, 1fr); overflow: hidden; border: 1px solid #eee; border-radius: 20px; background: white; }
+.table-side { min-width: 0; border-right: 1px solid #f4f4f5; }
+.table-head { height: 49px; display: grid; grid-template-columns: 45px 1fr auto; align-items: center; padding-right: 11px; font-size: 13.5px; color: #52525b; font-weight: 400; }
+.checkbox-button { border: 0; background: transparent; height: 100%; display: grid; place-items: center; }
+.topic-heading { justify-self: start; padding: 0; border: 0; color: inherit; background: transparent; text-align: left; }
+.checkbox-visual { width: 22px; height: 22px; display: grid; place-items: center; flex: 0 0 22px; border: 1px solid #e4e4e7; border-radius: 6px; background: #fafafa; transition: background-color 150ms ease, border-color 150ms ease; }
+.checkbox-visual.is-checked { border-color: #1264df; background: #2478f5; }
+.checkbox-check { width: 14px; height: 14px; overflow: visible; transform: scale(.72); opacity: 0; transition: transform 180ms cubic-bezier(.19,1,.22,1), opacity 110ms ease; }
+.checkbox-check path { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.checkbox-visual.is-checked .checkbox-check { transform: scale(1); opacity: 1; }
+.conversations-label { padding-left: 9px; }
+.rows { border-top: 1px solid #f4f4f5; }
+.table-row { width: 100%; height: 48px; display: grid; grid-template-columns: 34px minmax(0,1fr) 37px 58px; align-items: center; padding: 0 11px; border: 0; border-bottom: 1px solid #f4f4f5; background: white; text-align: left; font-size: 13.5px; font-weight: 400; color: #09090b; }
+.table-row:last-child { border-bottom: 0; }
+.table-row:hover { background: #fafafa; }
+.topic-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.color-mark { width: 10px; height: 6px; border-radius: 2px; box-shadow: inset 0 0 1px rgba(255,255,255,.75); }
+.count { justify-self: end; }
+.graphic-area { position: relative; width: 360px; height: 266px; min-width: 0; margin: 11px 0 0 12px; }
+.graphic-metric { position: absolute; top: 0; left: 0; display: flex; flex-direction: column; align-items: flex-start; white-space: nowrap; }
+.graphic-metric strong { font-size: 20px; font-weight: 600; line-height: 24px; transition: transform 120ms ease-out; }
+.graphic-metric strong.starts-with-one { transform: translateX(-3px); }
+.graphic-metric .sfi-numbers-row > .sfi-numbers-slot + .sfi-numbers-slot { margin-left: -.11em; }
+.graphic-metric .sfi-numbers-row > .sfi-numbers-mark { margin-inline: -.055em; }
+.graphic-metric > span { color: #52525b; font-size: 11px; font-weight: 400; line-height: 16px; }
+.chart-slot { position: absolute; top: 41px; left: 12px; width: calc(100% - 24px); height: 225px; overflow: visible; }
+.activity-chart { position: relative; width: 100%; height: 100%; font-family: "DM Sans", Arial, sans-serif; }
+.activity-chart:focus-visible { outline: 1px solid #c4c4cc; outline-offset: -2px; border-radius: 8px; }
+.chart-render-root { position: relative; z-index: 1; }
+.chart-render-root, .chart-render-root > canvas, .chart-render-root > svg { display: block; width: 100%; height: 100%; }
+.chart-render-root > svg { filter: drop-shadow(0 4px 5px rgba(92, 89, 129, .12)); }
+.chart-tooltip { position: fixed; z-index: 50; width: 156px; padding: 7.5px; border: .5px solid #e0e0e0; border-radius: 8px; background: #fafafa; box-shadow: 0 .932px 1.864px rgba(0,0,0,.05), 0 1.864px 3.728px rgba(0,0,0,.02); pointer-events: none; transform: translateX(-50%); transform-origin: center bottom; animation: chart-tooltip-in 140ms cubic-bezier(.19,1,.22,1) both; }
+.chart-tooltip-summary { display: flex; align-items: center; justify-content: space-between; gap: 6px; height: 16px; line-height: 16px; white-space: nowrap; }
+.chart-tooltip-summary > span { color: #71717a; font-size: 11px; font-weight: 500; }
+.chart-tooltip-summary strong { color: #09090b; font-size: 11px; font-weight: 600; }
+.chart-tooltip-categories { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.chart-tooltip-category { display: flex; align-items: center; min-width: 0; height: 16px; gap: 6px; font-size: 11px; line-height: 16px; }
+.chart-tooltip-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 2px; box-shadow: inset 0 0 1px rgba(255,255,255,.75); }
+.chart-tooltip-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #09090b; font-weight: 400; }
+.chart-tooltip-count { margin-left: auto; color: #09090b; font-weight: 500; }
+@keyframes chart-tooltip-in { from { opacity: 0; transform: translate(-50%, 4px) scale(.98); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
+@keyframes chart-tooltip-out { to { opacity: 0; transform: translate(-50%, 2px) scale(.985); } }
+.chart-tooltip[data-instant="true"] { animation: none; }
+.chart-tooltip.is-leaving { animation: chart-tooltip-out 100ms cubic-bezier(.19,1,.22,1) both; }
+.card-footer { height: 52px; padding: 4px 8px 0 16px; display: flex; align-items: center; justify-content: space-between; }
+.date-range { display: flex; align-items: center; gap: 6px; color: #71717a; font-size: 13.5px; font-weight: 400; white-space: nowrap; }
+.export-button { height: 32px; padding: 0 12px; color: white; font-family: "DM Sans", Arial, sans-serif; font-size: 13px; font-weight: 500; border: 1px solid #1264df; border-radius: 999px; background: linear-gradient(#3983ff, #0b6fff); box-shadow: inset 0 .5px 0 #9bc0f9; transition: transform 150ms cubic-bezier(.25,.46,.45,.94), filter 140ms ease; }
+.export-button:hover { filter: brightness(.97); }
+.export-button:active { transform: scale(.97); }
+.export-button:focus-visible { outline: 2px solid #09090b; outline-offset: 2px; }
+@media (max-width: 730px) { .stage { padding: 16px; } .card { height: auto; min-height: 414px; } .content { height: auto; grid-template-columns: minmax(0,1fr); } .table-side { border-right: 0; } .graphic-area { width: min(360px, calc(100% - 24px)); margin: 11px auto; border-top: 1px solid #f4f4f5; } }
+@media (prefers-reduced-motion: reduce) { .period-indicator, .export-button { transition: none; } .export-button:active { transform: none; } .checkbox-visual { transition: none; } .checkbox-check { transition: opacity 100ms ease; transform: none !important; } .checkbox-visual:not(.is-checked) .checkbox-check { opacity: 0; } .checkbox-visual.is-checked .checkbox-check { opacity: 1; } .chart-tooltip:not([data-instant="true"]) { animation: chart-tooltip-fade 100ms ease-out both; } .chart-tooltip.is-leaving { animation: chart-tooltip-fade 100ms ease-out both; } }
+@keyframes chart-tooltip-fade { from { opacity: 0; } to { opacity: 1; } }

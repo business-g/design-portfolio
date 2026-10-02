@@ -11,6 +11,7 @@ export default defineConfig({
     legacyPayment: resolve(import.meta.dirname, 'code-components/legacy-payment-flow/index.html'),
     agentCard: resolve(import.meta.dirname, 'code-components/agent-card-clickable-prototype/index.html'),
     slider: resolve(import.meta.dirname, 'code-components/base-slider-prototype/index.html'),
+    supportVolume: resolve(import.meta.dirname, 'code-components/support-volume-figma-prototype/index.html'),
     prototype: resolve(import.meta.dirname, 'code-components/base-clickable-prototype/index.html'),
     reportingBacklog: resolve(import.meta.dirname, 'code-components/reporting-backlog-dnd-prototype/index.html'),
   } } },
