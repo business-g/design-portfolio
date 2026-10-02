@@ -58,7 +58,7 @@ document.querySelector('#app').innerHTML = `
               <canvas class="portfolio-video-canvas" width="3048" height="2160" role="img" aria-label="Invarn website footer animation"></canvas>
             </div>
           </div>
-          <a class="portfolio-site-link" href="https://invarn.lamborazer.workers.dev" target="_blank" rel="noopener noreferrer" aria-label="Open Invarn website">
+          <a class="portfolio-site-link" href="https://invarn.kctv.workers.dev" target="_blank" rel="noopener noreferrer" aria-label="Open Invarn website">
             <img src="/assets/circle-arrow-up-right-20.svg" width="20" height="20" alt="" />
           </a>
           <div class="portfolio-slider-dots" role="group" aria-label="Choose Invarn website slide">
