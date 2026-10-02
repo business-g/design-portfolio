@@ -41,20 +41,20 @@ document.querySelector('#app').innerHTML = `
 
     <section class="work-area" aria-label="Selected work">
       <div class="gallery" id="design-gallery">
-        ${works.map(([number, title], index) => `<figure class="work-frame" id="work-${number}"><img src="/assets/work-${number}.webp" width="3048" height="${index < 2 ? '2184' : '2160'}" alt="${title} design preview" ${index > 1 ? 'loading="lazy"' : 'fetchpriority="high"'} /></figure>`).join('')}
+        ${works.map(([number, title], index) => `<figure class="work-frame" id="work-${number}"><img src="/assets/work-${number}${index >= 3 ? '-optimized' : ''}.webp" width="3048" height="${index < 2 ? '2184' : '2160'}" alt="${title} design preview" ${index < 4 ? 'loading="eager"' : 'loading="lazy"'} decoding="async" ${index < 2 ? 'fetchpriority="high"' : ''} /></figure>`).join('')}
         <figure class="work-frame portfolio-slider" id="work-07" aria-label="Invarn website design, slide 1 of 4">
           <div class="portfolio-slider-track">
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" data-src="/assets/invarn-site-01.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-01-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="2032" height="1440" role="img" aria-label="Invarn website hero animation"></canvas>
             </div>
-            <div class="portfolio-slide"><img src="/assets/invarn-site-03.webp" width="4064" height="2880" loading="lazy" alt="Invarn action control website page" /></div>
+            <div class="portfolio-slide"><img src="/assets/invarn-site-03-optimized.webp" width="4064" height="2880" loading="lazy" decoding="async" alt="Invarn action control website page" /></div>
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" data-src="/assets/invarn-site-04.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-04-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="2032" height="1440" role="img" aria-label="Invarn pricing website animation"></canvas>
             </div>
             <div class="portfolio-slide">
-              <video class="portfolio-video-source" data-src="/assets/invarn-site-05.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+              <video class="portfolio-video-source" data-src="/assets/invarn-site-05-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
               <canvas class="portfolio-video-canvas" width="3048" height="2160" role="img" aria-label="Invarn website footer animation"></canvas>
             </div>
           </div>
@@ -65,24 +65,24 @@ document.querySelector('#app').innerHTML = `
             ${[0, 1, 2, 3].map(index => `<button type="button" class="portfolio-slider-dot${index === 0 ? ' is-active' : ''}" data-slide="${index}" aria-label="Show slide ${index + 1}" aria-pressed="${index === 0}"></button>`).join('')}
           </div>
         </figure>
-        <figure class="work-frame" id="work-08"><img src="/assets/work-08.webp" width="4064" height="2912" loading="lazy" alt="Surf 2 VPN dashboard design preview" /></figure>
-        <figure class="work-frame" id="work-09"><img src="/assets/work-09.webp" width="4064" height="2880" loading="lazy" alt="Wallet connection mobile interface design preview" /></figure>
-        <figure class="work-frame" id="work-10"><img src="/assets/work-10.webp" width="4064" height="2880" loading="lazy" alt="Approval pressure analytics design preview" /></figure>
+        <figure class="work-frame" id="work-08"><img src="/assets/work-08-optimized.webp" width="4064" height="2912" loading="lazy" decoding="async" alt="Surf 2 VPN dashboard design preview" /></figure>
+        <figure class="work-frame" id="work-09"><img src="/assets/work-09-optimized.webp" width="4064" height="2880" loading="lazy" decoding="async" alt="Wallet connection mobile interface design preview" /></figure>
+        <figure class="work-frame" id="work-10"><img src="/assets/work-10-optimized.webp" width="4064" height="2880" loading="lazy" decoding="async" alt="Approval pressure analytics design preview" /></figure>
         <figure class="work-frame standalone-video-frame" id="work-12">
-          <video class="portfolio-video-source" data-src="/assets/work-12.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-12-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3194" height="2160" role="img" aria-label="Transfer flow interface animation"></canvas>
         </figure>
-        <figure class="work-frame" id="work-11"><img src="/assets/work-11.webp" width="4064" height="2880" loading="lazy" alt="Audio and video settings design preview" /></figure>
+        <figure class="work-frame" id="work-11"><img src="/assets/work-11-optimized.webp" width="4064" height="2880" loading="lazy" decoding="async" alt="Audio and video settings design preview" /></figure>
         <figure class="work-frame standalone-video-frame" id="work-13" style="--video-ratio: 3080 / 2160">
-          <video class="portfolio-video-source" data-src="/assets/work-13.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-13-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3080" height="2160" role="img" aria-label="Product interface animation"></canvas>
         </figure>
         <figure class="work-frame standalone-video-frame" id="work-14">
-          <video class="portfolio-video-source" data-src="/assets/work-14.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-14-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3194" height="2160" role="img" aria-label="Lottie card interface animation"></canvas>
         </figure>
         <figure class="work-frame standalone-video-frame" id="work-15" style="--video-ratio: 3202 / 2160">
-          <video class="portfolio-video-source" data-src="/assets/work-15.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
+          <video class="portfolio-video-source" data-src="/assets/work-15-optimized.mp4" muted loop playsinline disablepictureinpicture controlslist="nodownload nofullscreen noremoteplayback" preload="none" hidden></video>
           <canvas class="portfolio-video-canvas" width="3202" height="2160" role="img" aria-label="Product scene interface animation"></canvas>
         </figure>
       </div>
