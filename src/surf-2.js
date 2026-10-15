@@ -28,15 +28,6 @@ const sections = [
     ],
   },
   {
-    id: 'first-access',
-    title: 'First access',
-    navTitle: 'First access',
-    paragraphs: [
-      'The sign-in screen points people to the default password on the router package. It gives a first-time owner a clear next step before they reach the admin panel.',
-    ],
-    media: [image('sign_in_3x', 'Surf 2 admin sign-in screen', 'Admin sign-in', { width: 4320, height: 2760 })],
-  },
-  {
     id: 'home',
     title: 'Home',
     navTitle: 'Home',
@@ -127,13 +118,13 @@ const sections = [
     ],
   },
   {
-    id: 'reflection',
+    id: 'result',
     title: 'Result',
     navTitle: 'Result',
     paragraphs: [
-      'Surf 2 shipped with an admin panel designed around the questions people bring to a router, rather than the terminology inside it. People can find the setting they need and see what will happen when they change it, without looking up instructions elsewhere. The router is now on the market and in active use.',
+      'The router is now on the market and in active use.',
     ],
-    media: [image('surf-2-router-result', 'Pink Surf 2 router on a desk', 'Surf 2 router', { width: 4608, height: 3048 })],
+    media: [image('sign_in_3x', 'Surf 2 admin sign-in screen', 'Admin sign-in', { width: 4320, height: 2760 })],
   },
 ];
 
@@ -176,6 +167,7 @@ document.querySelector('#app').innerHTML = `
           <div><dt>Impact</dt><dd>Made routine router setup easier for home users while keeping advanced network controls accessible to administrators</dd></div>
           <div><dt>Product</dt><dd>Router admin panel</dd></div>
         </dl>
+        ${renderImage(image('surf-2-router-result', 'Pink Surf 2 router on a desk', 'Surf 2 router', { width: 4608, height: 3048 }))}
       </header>
       ${sections.map(renderSection).join('')}
       <div class="case-end-divider" aria-hidden="true"></div>
